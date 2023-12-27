@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
     // declaring the Scanner
     static Scanner input = new Scanner (System.in);
-    static WestminsterShoppingManager shoppingManager = new WestminsterShoppingManager();
+    static WestminsterShoppingManager manager = new WestminsterShoppingManager();
     public static void  main(String [] args){
         while (true){
             System.out.println("Select option\n" +
@@ -23,7 +23,7 @@ public class Main {
                     addProduct();
                     break;
                 case 2:
-//                    removeProduct();
+                    removeProduct();
                     break;
                 case 3:
                     listProduct();
@@ -76,7 +76,7 @@ public class Main {
                 electronics.setAvailableItems(availableItems);
                 electronics.setPrice(price);
 
-                shoppingManager.addProduct(electronics);
+                manager.addProduct(electronics);
                 break;
             }
             else if (option == 2) {
@@ -93,13 +93,16 @@ public class Main {
                 clothing.setAvailableItems(availableItems);
                 clothing.setPrice(price);
 
-                shoppingManager.addProduct(clothing);
+                manager.addProduct(clothing);
                 break;
             }
         }
     }
     static void removeProduct (){
+        System.out.println("enter the product ID: ");
+        int removeProductId = input.nextInt();
 
+        manager.removeProduct(removeProductId);
     }
     static void listProduct (){
         WestminsterShoppingManager.displayProducts();

@@ -14,7 +14,14 @@ public class WestminsterShoppingManager {
     }
 
     public void removeProduct(int productId) {
-
+        for (Product product: productsList){
+            if (product.getProductId() == productId){
+                productsList.remove(product);
+                System.out.println("Product removed: "+product.getProductName());
+                return;
+            }
+        }
+        System.out.println("product with ID - "+productId+" not found.");
     }
 
     public static void displayProducts() {
