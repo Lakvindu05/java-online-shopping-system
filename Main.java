@@ -13,12 +13,25 @@ public class Main {
                     "4. Save product file\n" +
                     "5. Load product file\n" +
                     "6. Exit");
-            // getting user input
+            // getting User input
             System.out.print("Enter option : ");
             int option = input.nextInt();
+
             switch (option){
                 case 1:
                     addProduct();
+                    break;
+                case 2:
+                    removeProduct();
+                    break;
+                case 3:
+                    listProducts();
+                    break;
+                case 4:
+                    saveProduct();
+                    break;
+                case 5:
+                    loadProduct();
                     break;
             }
         }
@@ -31,5 +44,8 @@ public class Main {
                 "\t2. Clothing\n");
         System.out.print("Enter option : ");
         int option = input.nextInt();
+        if (option == 1){
+
+        }
     }
 }

@@ -1,6 +1,6 @@
 package onlineShopping;
 
-public class user {
+public class User {
     private String userName;
     private String password;
 
