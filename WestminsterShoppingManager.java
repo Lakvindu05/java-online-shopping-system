@@ -5,7 +5,7 @@ public class WestminsterShoppingManager {
     private static ArrayList<Product> productsList;
 
     public WestminsterShoppingManager() {
-        this.productsList = new ArrayList<>();
+        productsList = new ArrayList<>();
     }
 
     public void addProduct(Product product){
@@ -21,7 +21,7 @@ public class WestminsterShoppingManager {
     public static void displayProducts() {
         System.out.println("Products in the system:");
         for (Product product : productsList) {
-            System.out.println(product.getProductName() + " - $" + product.getPrice() + " - Qty" + product.getAvailableItems());
+            System.out.println(product.getProductName() + " - $" + product.getPrice() + " - Qty " + product.getAvailableItems());
         }
     }
 }
