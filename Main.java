@@ -26,7 +26,7 @@ public class Main {
 //                    removeProduct();
                     break;
                 case 3:
-                    listProducts();
+                    WestminsterShoppingManager.displayProducts();
                     break;
                 case 4:
 //                    saveProduct();
@@ -95,9 +95,5 @@ public class Main {
                 break;
             }
         }
-    }
-
-    static void listProducts(){
-
     }
 }
