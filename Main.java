@@ -36,6 +36,7 @@ public class Main {
             }
         }
     }
+
     // method to add product
     static void addProduct(){
         System.out.print("ADD PRODUCT MENU\n" +

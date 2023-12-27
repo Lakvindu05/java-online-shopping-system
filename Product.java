@@ -1,11 +1,13 @@
 package onlineShopping;
 
 abstract class Product {
+    // declaring variables
     private int productId;
     private String productName;
     private int availableItems;
     private double price;
 
+    // getters and setters
     public int getProductId() {
         return productId;
     }

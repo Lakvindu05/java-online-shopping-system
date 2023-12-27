@@ -2,13 +2,15 @@ package onlineShopping;
 import java.util.*;
 
 public class ShoppingCart {
-    private ArrayList<Product> productList;
+    // declaring variables
+    private ArrayList<Product> cartProductList;
 
+    // getters and setters
     public void addProducts(Product product){
-        productList.add(product);
+        cartProductList.add(product);
     }
 
     public void removeProducts(Product product){
-        productList.remove(product);
+        cartProductList.remove(product);
     }
 }

@@ -1,9 +1,11 @@
 package onlineShopping;
 
 public class User {
+    // declaring variables
     private String userName;
     private String password;
 
+    // getters and setters
     public String getUserName() {
         return userName;
     }
