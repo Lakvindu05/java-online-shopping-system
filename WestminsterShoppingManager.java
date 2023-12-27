@@ -4,6 +4,8 @@ import java.util.*;
 public class WestminsterShoppingManager {
     private ArrayList<Product> productsList;
 
+
+
     public void addProduct(Product product){
         productsList.add(product);
         System.out.println("Product added:"+product.getProductName());
