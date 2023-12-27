@@ -26,7 +26,7 @@ public class Main {
 //                    removeProduct();
                     break;
                 case 3:
-                    WestminsterShoppingManager.displayProducts();
+                    listProduct();
                     break;
                 case 4:
 //                    saveProduct();
@@ -34,6 +34,8 @@ public class Main {
                 case 5:
 //                    loadProduct();
                     break;
+                case 6:
+                    System.exit(0);
             }
         }
     }
@@ -98,5 +100,8 @@ public class Main {
     }
     static void removeProduct (){
 
+    }
+    static void listProduct (){
+        WestminsterShoppingManager.displayProducts();
     }
 }

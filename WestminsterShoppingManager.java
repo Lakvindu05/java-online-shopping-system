@@ -13,9 +13,8 @@ public class WestminsterShoppingManager {
         System.out.println("Product added:"+product.getProductName());
     }
 
-    public void removeProduct(Product product) {
-        productsList.remove(product);
-        System.out.println("Product removed: " + product.getProductName());
+    public void removeProduct(int productId) {
+
     }
 
     public static void displayProducts() {
