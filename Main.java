@@ -22,23 +22,23 @@ public class Main {
                     addProduct();
                     break;
                 case 2:
-                    removeProduct();
+//                    removeProduct();
                     break;
                 case 3:
-                    listProducts();
+//                    listProducts();
                     break;
                 case 4:
-                    saveProduct();
+//                    saveProduct();
                     break;
                 case 5:
-                    loadProduct();
+//                    loadProduct();
                     break;
             }
         }
     }
     // method to add product
     static void addProduct(){
-        System.out.print("ADD PRODUCT MENU\n\n" +
+        System.out.print("ADD PRODUCT MENU\n" +
                 "Select product type\n" +
                 "\t1. Electronic\n" +
                 "\t2. Clothing\n");
