@@ -1,9 +1,12 @@
 package onlineShopping;
 import java.util.*;
+import java.io.*;
 
 public class Main {
     // declaring the Scanner
     static Scanner input = new Scanner (System.in);
+
+    // creating a common object called manager
     static WestminsterShoppingManager manager = new WestminsterShoppingManager();
     public static void  main(String [] args){
         while (true){
@@ -26,7 +29,7 @@ public class Main {
                     removeProduct();
                     break;
                 case 3:
-                    listProduct();
+                    manager.displayProducts();
                     break;
                 case 4:
 //                    saveProduct();
@@ -69,6 +72,7 @@ public class Main {
                 System.out.print("Enter warranty period for Electronics: ");
                 int warrantyPeriod = input.nextInt();
 
+                // setting the variables of the object
                 Electronics electronics = new Electronics(brand, warrantyPeriod);
 
                 electronics.setProductId(productId);
@@ -86,6 +90,7 @@ public class Main {
                 System.out.print("Enter color for Clothing: ");
                 String color = input.next();
 
+                // setting the variables of the object
                 Clothing clothing = new Clothing(size,color);
 
                 clothing.setProductId(productId);
@@ -99,12 +104,10 @@ public class Main {
         }
     }
     static void removeProduct (){
-        System.out.println("enter the product ID: ");
+        System.out.print("REMOVE PRODUCT\n"+
+                "Enter the product ID of the product to be removed: ");
         int removeProductId = input.nextInt();
 
         manager.removeProduct(removeProductId);
-    }
-    static void listProduct (){
-        WestminsterShoppingManager.displayProducts();
     }
 }
