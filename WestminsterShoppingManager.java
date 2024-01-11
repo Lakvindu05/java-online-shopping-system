@@ -83,11 +83,25 @@ public class WestminsterShoppingManager {
                     Electronics electronics = new Electronics(type,productId,productName,availableItems,price,brand,warrantyPeriod);
                     productsList.add(electronics);
                     System.out.println("Product loaded:"+electronics.getProductName());
+
+                } else if (type.equals("Clothing")) {
+                    String id = attributes[1].trim();
+                    String productName = attributes[2].trim();
+                    String items = attributes[3].trim();
+                    String size = attributes[4].trim();
+                    String color = attributes[5].trim();
+                    String cost = attributes[6].trim();
+
+                    int productId = Integer.parseInt(id);
+                    int availableItems = Integer.parseInt(items);
+                    double price  = Double.parseDouble(cost);
+
+                    // setting and creating the object
+                    Clothing clothing = new Clothing(type,productId,productName,availableItems,price,size,color);
+                    productsList.add(clothing);
+                    System.out.println("Product loaded:"+clothing.getProductName());
                 }
-
-
             }
         }
     }
-
 }

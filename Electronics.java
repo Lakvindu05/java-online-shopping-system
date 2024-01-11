@@ -39,6 +39,6 @@ public class Electronics extends Product {
                 + getAvailableItems() + ","
                 + getBrand() + ","
                 + getWarrantyPeriod() + ","
-                + getPrice();
+                + getPrice() + "\n";
     }
 }

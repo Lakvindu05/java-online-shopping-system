@@ -36,6 +36,6 @@ public class Clothing extends Product {
                 + getAvailableItems() + ","
                 + getSize() + ","
                 + getColor() + ","
-                + getPrice();
+                + getPrice() + "\n";
     }
 }
