@@ -75,14 +75,8 @@ public class Main {
                 System.out.print("Enter warranty period for Electronics: ");
                 int warrantyPeriod = input.nextInt();
 
-                // setting the variables of the object
-                Electronics electronics = new Electronics(brand, warrantyPeriod);
-
-                electronics.setType(type);
-                electronics.setProductId(productId);
-                electronics.setProductName(productName);
-                electronics.setAvailableItems(availableItems);
-                electronics.setPrice(price);
+                // setting and creating the object
+                Electronics electronics = new Electronics(type,productId,productName,availableItems,price,brand,warrantyPeriod);
 
                 // adding the electronic product into
                 manager.addProduct(electronics);
@@ -97,13 +91,7 @@ public class Main {
                 String color = input.next();
 
                 // setting the variables of the object
-                Clothing clothing = new Clothing(size,color);
-
-                clothing.setType(type);
-                clothing.setProductId(productId);
-                clothing.setProductName(productName);
-                clothing.setAvailableItems(availableItems);
-                clothing.setPrice(price);
+                Clothing clothing = new Clothing(type,productId,productName,availableItems,price,size,color);
 
                 // adding the clothing product into
                 manager.addProduct(clothing);

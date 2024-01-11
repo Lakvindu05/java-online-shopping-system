@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+import static onlineShopping.Main.manager;
+
 public class WestminsterShoppingManager {
     private static ArrayList<Product> productsList;
 
@@ -56,19 +58,36 @@ public class WestminsterShoppingManager {
         System.out.println("data successfully saved");
     }
     static void  loadProduct() throws IOException{
+
         BufferedReader productReader = new BufferedReader(new FileReader("filename.txt"));
         for(String line; (line = productReader.readLine()) != null;){
-            int stringBrakeIndex = line.indexOf(":");
-            if (stringBrakeIndex != -1) {
-                String attributeName = line.substring(0, stringBrakeIndex);
-                String attributeValue = line.substring(stringBrakeIndex + 2);
 
-                if (attributeName.equals("Type ") && attributeValue.equals("Electronics")){
-                    System.out.println("this is a electronic product");
-                } else if (attributeName.equals("Type ") && attributeValue.equals("Clothing")) {
-                    System.out.println("this is a Clothing product");
+            String [] attributes = line.split(",");
+            if (attributes.length >= 6){
+                String type = attributes[0].trim();
+                if (type.equals("Electronics")){
+
+                    String id = attributes[1].trim();
+                    String productName = attributes[2].trim();
+                    String items = attributes[3].trim();
+                    String brand = attributes[4].trim();
+                    String warranty = attributes[5].trim();
+                    String cost = attributes[6].trim();
+
+                    int productId = Integer.parseInt(id);
+                    int availableItems = Integer.parseInt(items);
+                    int warrantyPeriod = Integer.parseInt(warranty);
+                    double price  = Double.parseDouble(cost);
+
+                    // setting and creating the object
+                    Electronics electronics = new Electronics(type,productId,productName,availableItems,price,brand,warrantyPeriod);
+                    productsList.add(electronics);
+                    System.out.println("Product loaded:"+electronics.getProductName());
                 }
+
+
             }
         }
     }
+
 }

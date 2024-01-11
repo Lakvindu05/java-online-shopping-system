@@ -8,6 +8,14 @@ abstract class Product {
     private double price;
     private String type;
 
+    public Product(String type, int productId, String productName, int availableItems, double price) {
+        this.type = type;
+        this.productId = productId;
+        this.productName = productName;
+        this.availableItems = availableItems;
+        this.price = price;
+    }
+
     // getters and setters
     public int getProductId() {
         return productId;

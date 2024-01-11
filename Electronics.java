@@ -6,10 +6,13 @@ public class Electronics extends Product {
     private int warrantyPeriod;
 
     // constructor
-    public Electronics(String brand, int warrantyPeriod) {
+
+    public Electronics(String type,int productId,String productName,int availableItems,double price,String brand, int warrantyPeriod){
+        super(type,productId,productName,availableItems,price);
         this.brand = brand;
         this.warrantyPeriod = warrantyPeriod;
     }
+
 
     // getters and setters
     public String getBrand() {
@@ -30,13 +33,12 @@ public class Electronics extends Product {
 
     @Override
     public String toString() {
-        return  "----------------------------------------------------------\n" +
-                "Type : " + getType() + "\n" +
-                "productId : " + getProductId() + "\n" +
-                "productName : " + getProductName() + "\n" +
-                "availableItems : " + getAvailableItems() + "\n" +
-                "price : " + getPrice() + "\n" +
-                "brand : " + getBrand() + "\n" +
-                "warrantyPeriod : " + getWarrantyPeriod() + "\n";
+        return getType() + ","
+                + getProductId() + ","
+                + getProductName() + ","
+                + getAvailableItems() + ","
+                + getBrand() + ","
+                + getWarrantyPeriod() + ","
+                + getPrice();
     }
 }
