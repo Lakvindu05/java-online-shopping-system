@@ -10,7 +10,7 @@ public class Main {
     static WestminsterShoppingManager manager = new WestminsterShoppingManager();
 
     // main
-    public static void  main(String [] args){
+    public static void  main(String [] args) throws IOException {
         while (true){
             System.out.println("Select option\n" +
                     "1. Add product\n" +
@@ -34,10 +34,10 @@ public class Main {
                     manager.displayProducts();
                     break;
                 case 4:
-//                    saveProduct();
+                    manager.saveFile();
                     break;
                 case 5:
-//                    loadProduct();
+                    manager.loadProduct();
                     break;
                 case 6:
                     System.exit(0);
@@ -68,6 +68,7 @@ public class Main {
             double price = input.nextDouble();
 
             if (option == 1){
+                String type = "Electronics";
                 System.out.print("Enter brand for Electronics: ");
                 String brand = input.next();
 
@@ -77,6 +78,7 @@ public class Main {
                 // setting the variables of the object
                 Electronics electronics = new Electronics(brand, warrantyPeriod);
 
+                electronics.setType(type);
                 electronics.setProductId(productId);
                 electronics.setProductName(productName);
                 electronics.setAvailableItems(availableItems);
@@ -87,6 +89,7 @@ public class Main {
                 break;
             }
             else if (option == 2) {
+                String type = "Clothing";
                 System.out.print("Enter size for Clothing: ");
                 String size = input.next();
 
@@ -96,6 +99,7 @@ public class Main {
                 // setting the variables of the object
                 Clothing clothing = new Clothing(size,color);
 
+                clothing.setType(type);
                 clothing.setProductId(productId);
                 clothing.setProductName(productName);
                 clothing.setAvailableItems(availableItems);
@@ -107,7 +111,7 @@ public class Main {
             }
         }
     }
-    static void removeProduct (){
+    static void removeProduct(){
         System.out.print("REMOVE PRODUCT\n"+
                 "Enter the product ID of the product to be removed: ");
         int removeProductId = input.nextInt();

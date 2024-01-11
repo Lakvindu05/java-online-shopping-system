@@ -6,6 +6,7 @@ abstract class Product {
     private String productName;
     private int availableItems;
     private double price;
+    private String type;
 
     // getters and setters
     public int getProductId() {
@@ -24,6 +25,10 @@ abstract class Product {
         return price;
     }
 
+    public String getType() {
+        return type;
+    }
+
     public void setProductId(int productId) {
         this.productId = productId;
     }
@@ -38,5 +43,9 @@ abstract class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
