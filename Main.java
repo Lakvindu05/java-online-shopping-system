@@ -6,8 +6,10 @@ public class Main {
     // declaring the Scanner
     static Scanner input = new Scanner (System.in);
 
-    // creating a common object called manager
+    // used this to create a static object called manager (in this code the productList arraylist is created such that the  )
     static WestminsterShoppingManager manager = new WestminsterShoppingManager();
+
+    // main
     public static void  main(String [] args){
         while (true){
             System.out.println("Select option\n" +
@@ -80,6 +82,7 @@ public class Main {
                 electronics.setAvailableItems(availableItems);
                 electronics.setPrice(price);
 
+                // adding the electronic product into
                 manager.addProduct(electronics);
                 break;
             }
@@ -98,6 +101,7 @@ public class Main {
                 clothing.setAvailableItems(availableItems);
                 clothing.setPrice(price);
 
+                // adding the clothing product into
                 manager.addProduct(clothing);
                 break;
             }

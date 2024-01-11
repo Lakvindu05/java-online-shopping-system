@@ -2,16 +2,25 @@ package onlineShopping;
 import java.util.*;
 
 public class WestminsterShoppingManager {
-    private static ArrayList<Product> productsList;
+    private  ArrayList<Product> productsList;
 
-    // getter
-    public static ArrayList<Product> getProductsList() {
+//    // getter
+//    public static ArrayList<Product> getProductsList() {
+//        return productsList;
+//    }
+//
+//    // setter
+//    public static void setProductsList(ArrayList<Product> productsList) {
+//        WestminsterShoppingManager.productsList = productsList;
+//    }
+
+
+    public ArrayList<Product> getProductsList() {
         return productsList;
     }
 
-    // setter
-    public static void setProductsList(ArrayList<Product> productsList) {
-        WestminsterShoppingManager.productsList = productsList;
+    public void setProductsList(ArrayList<Product> productsList) {
+        this.productsList = productsList;
     }
 
     public WestminsterShoppingManager() {

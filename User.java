@@ -5,6 +5,12 @@ public class User {
     private String userName;
     private String password;
 
+    // creating user constructor to get username and password
+    public User(String userName,String password){
+        this.userName = userName;
+        this.password = password;
+    }
+
     // getters and setters
     public String getUserName() {
         return userName;
