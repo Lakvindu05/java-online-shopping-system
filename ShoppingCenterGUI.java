@@ -20,7 +20,11 @@ public class ShoppingCenterGUI extends JFrame {
         tableModel.addColumn("Product Name");
         tableModel.addColumn("Available Items");
         tableModel.addColumn("Price");
-        tableModel.addColumn("Additional Info");
+        tableModel.addColumn("Brand");
+        tableModel.addColumn("Warranty");
+        tableModel.addColumn("Color");
+        tableModel.addColumn("Size");
+
 
         productTable = new JTable(tableModel);
 
@@ -28,10 +32,6 @@ public class ShoppingCenterGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(productTable);
         add(scrollPane, BorderLayout.CENTER);
 
-        // Add other GUI components and logic here
-        // ...
-
-        // Refresh the table when the GUI is created
         refreshTable();
     }
     public void refreshTable() {
@@ -41,11 +41,17 @@ public class ShoppingCenterGUI extends JFrame {
         // Populate the table with products from the productsList
         for (Product product : WestminsterShoppingManager.getProductsList()) {
             // Customize this based on the product type
-            String additionalInfo = "";
+            String color = null;
+            String size = null;
+            String brand = null;
+            String warranty = null;
+
             if (product instanceof Electronics) {
-                additionalInfo = "Brand: " + ((Electronics) product).getBrand() + ", Warranty: " + ((Electronics) product).getWarrantyPeriod();
+                brand = ((Electronics) product).getBrand();
+                warranty = Integer.toString(((Electronics) product).getWarrantyPeriod());
             } else if (product instanceof Clothing) {
-                additionalInfo = "Size: " + ((Clothing) product).getSize() + ", Color: " + ((Clothing) product).getColor();
+                color = ((Clothing) product).getColor();
+                size = ((Clothing) product).getSize();
             }
 
             // Add a row to the table
@@ -55,7 +61,10 @@ public class ShoppingCenterGUI extends JFrame {
                     product.getProductName(),
                     product.getAvailableItems(),
                     product.getPrice(),
-                    additionalInfo
+                    color,
+                    size,
+                    brand,
+                    warranty
             });
         }
     }
