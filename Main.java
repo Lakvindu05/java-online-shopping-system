@@ -9,6 +9,8 @@ public class Main {
     // used this to create a static object called manager (in this code the productList arraylist is created such that the  )
     static WestminsterShoppingManager manager = new WestminsterShoppingManager();
 
+    static ShoppingCenterGUI shoppingGUI;
+
     // main
     public static void  main(String [] args) throws IOException {
         while (true){
@@ -18,17 +20,20 @@ public class Main {
                     "3. Print list of product\n" +
                     "4. Save product file\n" +
                     "5. Load product file\n" +
-                    "6. Exit");
+                    "6. Customer GUI\n" +
+                    "\t0. Exit");
             // getting User input
             System.out.print("Enter option : ");
             int option = input.nextInt();
 
             switch (option){
+                case 0:
+                    System.exit(0);
                 case 1:
                     addProduct();
                     break;
                 case 2:
-                    removeProduct();
+                    manager.removeProduct();
                     break;
                 case 3:
                     manager.displayProducts();
@@ -40,7 +45,9 @@ public class Main {
                     manager.loadProduct();
                     break;
                 case 6:
-                    System.exit(0);
+                    shoppingGUI = new ShoppingCenterGUI();
+                    shoppingGUI.setVisible(true);
+                    break;
             }
         }
     }
@@ -98,12 +105,5 @@ public class Main {
                 break;
             }
         }
-    }
-    static void removeProduct(){
-        System.out.print("REMOVE PRODUCT\n"+
-                "Enter the product ID of the product to be removed: ");
-        int removeProductId = input.nextInt();
-
-        manager.removeProduct(removeProductId);
     }
 }

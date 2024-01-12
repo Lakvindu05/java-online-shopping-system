@@ -5,9 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-import static onlineShopping.Main.manager;
-
 public class WestminsterShoppingManager {
+    static Scanner input = new Scanner (System.in);
     private static ArrayList<Product> productsList;
 
     public ArrayList<Product> getProductsList() {
@@ -27,17 +26,19 @@ public class WestminsterShoppingManager {
         System.out.println("Product added:"+product.getProductName());
     }
 
-    public void removeProduct(int productId) {
+    public void removeProduct() {
+        System.out.print("REMOVE PRODUCT\n"+
+                "Enter the product ID of the product to be removed: ");
+        int removeProductId = input.nextInt();
         for (Product product: productsList){
-            if (product.getProductId() == productId){
+            if (product.getProductId() == removeProductId){
                 productsList.remove(product);
                 System.out.println("Product removed: "+product.getProductName());
                 return;
             }
         }
-        System.out.println("product with ID - "+productId+" not found.");
+        System.out.println("product with ID - "+removeProductId+" not found.");
     }
-
     public void displayProducts() {
         System.out.println("Products in the system:");
         for (Product product : productsList) {
