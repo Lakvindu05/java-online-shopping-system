@@ -9,7 +9,7 @@ public class WestminsterShoppingManager {
     static Scanner input = new Scanner (System.in);
     private static ArrayList<Product> productsList;
 
-    public ArrayList<Product> getProductsList() {
+    public static ArrayList<Product> getProductsList() {
         return productsList;
     }
 
