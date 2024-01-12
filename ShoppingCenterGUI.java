@@ -1,6 +1,7 @@
 package onlineShopping;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +11,7 @@ public class ShoppingCenterGUI extends JFrame {
     private JTable productTable;
     private DefaultTableModel tableModel;
     private JComboBox<String> categoryBox;
+    private JPanel productInfoPanel;
     public ShoppingCenterGUI() {
         setTitle("Westminster Shopping Center");
         setSize(1000, 800);
@@ -30,6 +32,8 @@ public class ShoppingCenterGUI extends JFrame {
 
         // Add the table to a scroll pane to handle a large number of products
         JScrollPane scrollPane = new JScrollPane(productTable);
+//        int tableMarginSize = 25; // Adjust the margin size as needed
+//        scrollPane.setBorder(new EmptyBorder(tableMarginSize, tableMarginSize, tableMarginSize, tableMarginSize));
         add(scrollPane, BorderLayout.CENTER);
 
         // Create a drop-down menu for product category selection
@@ -48,6 +52,25 @@ public class ShoppingCenterGUI extends JFrame {
         topPanel.add(new JLabel("Select Product Category:"));
         topPanel.add(categoryBox);
         add(topPanel, BorderLayout.NORTH);
+
+        // Create a panel to display detailed information about the selected product
+        productInfoPanel = new JPanel();
+        productInfoPanel.setLayout(new BoxLayout(productInfoPanel, BoxLayout.Y_AXIS));
+        int marginSize = 25; // Adjust the margin size as needed
+        productInfoPanel.setBorder(new EmptyBorder(marginSize, marginSize, marginSize, marginSize));
+        add(productInfoPanel, BorderLayout.SOUTH);
+
+        // Add a selection listener to the table to update the product information panel
+        productTable.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                int selectedRow = productTable.getSelectedRow();
+                if (selectedRow != -1) {
+                    // Get the selected product and update the information panel
+                    Product selectedProduct = WestminsterShoppingManager.getProductsList().get(selectedRow);
+                    updateProductInfoPanel(selectedProduct);
+                }
+            }
+        });
 
         refreshTable();
     }
@@ -85,5 +108,31 @@ public class ShoppingCenterGUI extends JFrame {
                 });
             }
         }
+    }
+    public void updateProductInfoPanel(Product product) {
+        productInfoPanel.removeAll();
+
+        if (product != null) {
+            // Add new information about the selected product
+            productInfoPanel.add(new JLabel("Selected Product Information:"));
+            productInfoPanel.add(new JLabel(" "));
+            productInfoPanel.add(new JLabel("   Type: " + product.getType()));
+            productInfoPanel.add(new JLabel("   ID: " + product.getProductId()));
+            productInfoPanel.add(new JLabel("   Name: " + product.getProductName()));
+            productInfoPanel.add(new JLabel("   Available Items: " + product.getAvailableItems()));
+            productInfoPanel.add(new JLabel("   Price: " + product.getPrice()));
+
+            if (product instanceof Electronics) {
+                productInfoPanel.add(new JLabel("   Brand: " + ((Electronics) product).getBrand()));
+                productInfoPanel.add(new JLabel("   Warranty: " + ((Electronics) product).getWarrantyPeriod()));
+            } else if (product instanceof Clothing) {
+                productInfoPanel.add(new JLabel("   Size: " + ((Clothing) product).getSize()));
+                productInfoPanel.add(new JLabel("   Color: " + ((Clothing) product).getColor()));
+            }
+        }
+
+        // Repaint the panel to reflect the changes
+        productInfoPanel.revalidate();
+        productInfoPanel.repaint();
     }
 }

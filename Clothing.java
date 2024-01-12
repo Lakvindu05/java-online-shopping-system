@@ -1,6 +1,7 @@
 package onlineShopping;
 
 public class Clothing extends Product {
+
     // declaring variables
     private String size;
     private String color;
