@@ -6,11 +6,20 @@ public class ShoppingCart {
     private ArrayList<Product> cartProductList;
 
     // making shopping-cart constructor such that when this constructor run a ArrayList is created
-    public void shoppingCart(){
+    public ShoppingCart(){
         cartProductList = new ArrayList<>();
     }
 
     // getters and setters
+    public ArrayList<Product> getCartProductList() {
+        return cartProductList;
+    }
+
+    public void setCartProductList(ArrayList<Product> cartProductList) {
+        this.cartProductList = cartProductList;
+    }
+
+
     public void addProducts(Product product){
         cartProductList.add(product);
     }

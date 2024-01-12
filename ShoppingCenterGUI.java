@@ -12,6 +12,9 @@ public class ShoppingCenterGUI extends JFrame {
     private DefaultTableModel tableModel;
     private JComboBox<String> categoryBox;
     private JPanel productInfoPanel;
+    private ShoppingCart shoppingCart;
+
+
     public ShoppingCenterGUI() {
         setTitle("Westminster Shopping Center");
         setSize(1000, 800);
@@ -32,8 +35,6 @@ public class ShoppingCenterGUI extends JFrame {
 
         // Add the table to a scroll pane to handle a large number of products
         JScrollPane scrollPane = new JScrollPane(productTable);
-//        int tableMarginSize = 25; // Adjust the margin size as needed
-//        scrollPane.setBorder(new EmptyBorder(tableMarginSize, tableMarginSize, tableMarginSize, tableMarginSize));
         add(scrollPane, BorderLayout.CENTER);
 
         // Create a drop-down menu for product category selection
@@ -51,6 +52,17 @@ public class ShoppingCenterGUI extends JFrame {
         JPanel topPanel = new JPanel();
         topPanel.add(new JLabel("Select Product Category:"));
         topPanel.add(categoryBox);
+
+        // Add "View Shopping Cart" button
+        JButton viewCartButton = new JButton("View Shopping Cart");
+        viewCartButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openShoppingCart();
+            }
+        });
+        topPanel.add(viewCartButton);
+
         add(topPanel, BorderLayout.NORTH);
 
         // Create a panel to display detailed information about the selected product
@@ -59,6 +71,9 @@ public class ShoppingCenterGUI extends JFrame {
         int marginSize = 25; // Adjust the margin size as needed
         productInfoPanel.setBorder(new EmptyBorder(marginSize, marginSize, marginSize, marginSize));
         add(productInfoPanel, BorderLayout.SOUTH);
+
+        //  Initialize the shopping cart
+        shoppingCart = new ShoppingCart();
 
         // Add a selection listener to the table to update the product information panel
         productTable.getSelectionModel().addListSelectionListener(e -> {
@@ -129,10 +144,25 @@ public class ShoppingCenterGUI extends JFrame {
                 productInfoPanel.add(new JLabel("   Size: " + ((Clothing) product).getSize()));
                 productInfoPanel.add(new JLabel("   Color: " + ((Clothing) product).getColor()));
             }
+
+            // add to cart button
+            JButton addToCart = new JButton("Add to Cart");
+            addToCart.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    shoppingCart.addProducts(product);
+                    System.out.println("Product added to cart: " + product.getProductName());
+                }
+            });
+            productInfoPanel.add(addToCart);
         }
 
         // Repaint the panel to reflect the changes
         productInfoPanel.revalidate();
         productInfoPanel.repaint();
+    }
+    private void openShoppingCart() {
+        ShoppingCartGUI shoppingCartGUI = new ShoppingCartGUI(shoppingCart);
+        shoppingCartGUI.setVisible(true);
     }
 }

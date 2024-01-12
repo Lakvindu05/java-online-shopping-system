@@ -13,7 +13,6 @@ public class Electronics extends Product {
         this.warrantyPeriod = warrantyPeriod;
     }
 
-
     // getters and setters
     public String getBrand() {
         return brand;
