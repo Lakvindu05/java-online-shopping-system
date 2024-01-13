@@ -1,6 +1,7 @@
 package onlineShopping;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ public class ShoppingCartGUI extends JFrame {
     private JTable cartTable;
     private DefaultTableModel tableModel;
     private ShoppingCart shoppingCart;
+    private JPanel totalPanel;
 
     public ShoppingCartGUI(ShoppingCart cart) {
         this.shoppingCart = cart;
@@ -29,8 +31,15 @@ public class ShoppingCartGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(cartTable);
         add(scrollPane, BorderLayout.CENTER);
 
+        totalPanel = new JPanel();
+        totalPanel.setLayout(new BoxLayout(totalPanel, BoxLayout.Y_AXIS));
+        totalPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
         // Refresh the cart table
         refreshCartTable();
+        refreshTotalPanel();
+
+        add(totalPanel, BorderLayout.SOUTH);
     }
 
     public void refreshCartTable() {
@@ -42,21 +51,23 @@ public class ShoppingCartGUI extends JFrame {
 
         // Populate the table with cart details
         for (Product product : cartProductList) {
-            String productName = product.getProductName();
-            int quantity = 1; // Assuming quantity is 1 for simplicity, modify accordingly
+            String productName =  "ID: "+product.getProductId()+"    Name: "+product.getProductName() ;
+            int quantity = 1;
             double price = product.getPrice();
 
             tableModel.addRow(new Object[]{productName, quantity, price});
         }
     }
+    public void refreshTotalPanel() {
+        totalPanel.removeAll();
 
-//    public static void main(String[] args) {
-//        // Example of usage
-//        ShoppingCart shoppingCart = new ShoppingCart();
-//        shoppingCart.addProducts(new Product("Product1", 10.0)); // Add sample product
-//        shoppingCart.addProducts(new Product("Product2", 15.0)); // Add sample product
-//
-//        ShoppingCartGUI shoppingCartGUI = new ShoppingCartGUI(shoppingCart);
-//        shoppingCartGUI.setVisible(true);
-//    }
+        totalPanel.add(new JLabel("Total     $: " + shoppingCart.calculateCost()));
+        totalPanel.add(new JLabel("first purchase Discount 10%:     $ " + shoppingCart.firstPurchDiscount()));
+        totalPanel.add(new JLabel("three items in the same category Discount 20%     $ " + shoppingCart.categoryDiscount()));
+        totalPanel.add(new JLabel("final Cost:   $ "+ shoppingCart.finalTotal()));
+
+        // Repaint the panel to reflect the changes
+        totalPanel.revalidate();
+        totalPanel.repaint();
+    }
 }

@@ -16,10 +16,12 @@ public class ShoppingCenterGUI extends JFrame {
 
 
     public ShoppingCenterGUI() {
+        // creating the window
         setTitle("Westminster Shopping Center");
         setSize(1000, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // creating the model of the table by adding all the columns
         tableModel = new DefaultTableModel();
         tableModel.addColumn("Product Type");
         tableModel.addColumn("Product ID");
@@ -31,6 +33,7 @@ public class ShoppingCenterGUI extends JFrame {
         tableModel.addColumn("Color");
         tableModel.addColumn("Size");
 
+        // creating the productTable
         productTable = new JTable(tableModel);
 
         // Add the table to a scroll pane to handle a large number of products
@@ -58,6 +61,7 @@ public class ShoppingCenterGUI extends JFrame {
         viewCartButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                refreshTable();
                 openShoppingCart();
             }
         });
@@ -110,7 +114,7 @@ public class ShoppingCenterGUI extends JFrame {
                     size = ((Clothing) product).getSize();
                 }
 
-                tableModel.addRow(new Object[]{
+                Object[] rowData = new Object[]{
                         product.getType(),
                         product.getProductId(),
                         product.getProductName(),
@@ -120,7 +124,8 @@ public class ShoppingCenterGUI extends JFrame {
                         size,
                         brand,
                         warranty
-                });
+                };
+                tableModel.addRow(rowData);
             }
         }
     }
@@ -152,6 +157,9 @@ public class ShoppingCenterGUI extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     shoppingCart.addProducts(product);
                     System.out.println("Product added to cart: " + product.getProductName());
+                    int updateAvailable = product.getAvailableItems() - 1;
+                    product.setAvailableItems(updateAvailable);
+                    refreshTable();
                 }
             });
             productInfoPanel.add(addToCart);
