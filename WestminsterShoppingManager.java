@@ -22,6 +22,10 @@ public class WestminsterShoppingManager implements ShoppingManager {
 
     @Override
     public void addProduct() {
+        if (productsList.size() >= 50) {
+            System.out.println("Maximum number of products reached (50). Cannot add more products.");
+            return;
+        }
         while (true) {
             try {
                 System.out.print("ADD PRODUCT MENU\n" +
@@ -109,6 +113,8 @@ public class WestminsterShoppingManager implements ShoppingManager {
 
             if (!productFound) {
                 System.out.println("Product with ID - " + removeProductId + " not found.");
+                int productsAvailable = productsList.size();
+                System.out.println("Number of products available : "+productsAvailable);
             }
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a valid number.");
@@ -206,15 +212,19 @@ public class WestminsterShoppingManager implements ShoppingManager {
 
 
     public void console() {
+        System.out.println("Name: Lakvindu Siriwardena \n" +
+                "UOW No: W1953896\n" +
+                "IIT Id: 20211125\n\n");
         while (true) {
-            System.out.println("Select option\n" +
-                    "1. Add product\n" +
-                    "2. Remove product\n" +
-                    "3. Print list of product\n" +
-                    "4. Save product file\n" +
-                    "5. Load product file\n" +
-                    "6. Customer GUI\n" +
-                    "\t0. Exit");
+            System.out.println("Westminster Shopping Center Console menu\n" +
+                    "Select option\n" +
+                    "\t1. Add product\n" +
+                    "\t2. Remove product\n" +
+                    "\t3. Print list of product\n" +
+                    "\t4. Save product file\n" +
+                    "\t5. Load product file\n" +
+                    "\t6. Customer GUI\n" +
+                    "\t\t0. Exit");
             // getting User input
             System.out.print("Enter option : ");
             int option = input.nextInt();

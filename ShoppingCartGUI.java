@@ -7,10 +7,10 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class ShoppingCartGUI extends JFrame {
-    private JTable cartTable;
-    private DefaultTableModel tableModel;
-    private ShoppingCart shoppingCart;
-    private JPanel totalPanel;
+    private final JTable cartTable;
+    private final DefaultTableModel tableModel;
+    private final ShoppingCart shoppingCart;
+    private final JPanel totalPanel;
 
     public ShoppingCartGUI(ShoppingCart cart) {
         this.shoppingCart = cart;
@@ -33,7 +33,6 @@ public class ShoppingCartGUI extends JFrame {
 
         totalPanel = new JPanel();
         totalPanel.setLayout(new BoxLayout(totalPanel, BoxLayout.Y_AXIS));
-//        totalPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
 
         // Refresh the cart table
         refreshCartTable();

@@ -10,11 +10,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ShoppingCenterGUI extends JFrame {
-    private JTable productTable;
-    private DefaultTableModel tableModel;
-    private JComboBox<String> categoryBox;
-    private JPanel productInfoPanel;
-    private ShoppingCart shoppingCart;
+    private final JTable productTable;
+    private final DefaultTableModel tableModel;
+    private final JComboBox<String> categoryBox;
+    private final JPanel productInfoPanel;
+    private final ShoppingCart shoppingCart;
 
 
     public ShoppingCenterGUI() {
