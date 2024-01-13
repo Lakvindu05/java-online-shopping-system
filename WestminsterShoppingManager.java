@@ -121,7 +121,12 @@ public class WestminsterShoppingManager implements ShoppingManager {
         try {
             System.out.println("Products in the system:");
             for (Product product : productsList) {
-                System.out.println(product.getProductName() + " - $" + product.getPrice() + " - Qty " + product.getAvailableItems());
+                System.out.printf("Product ID:"+ product.getProductId()+"\n" +
+                        "Product Name:"+ product.getProductId()+"\n" +
+                        "Product Type:"+ product.getProductId()+"\n"+
+                        "Product Available Items:"+ product.getProductId()+"\n"+
+                        "Product Price:"+ product.getProductId()+"\n" +
+                        "--------------------------------------------\n");
             }
         } catch (Exception e) {
             System.out.println("An error occurred while displaying products: " + e.getMessage());
@@ -200,7 +205,7 @@ public class WestminsterShoppingManager implements ShoppingManager {
     }
 
 
-    public void main(String[] args) {
+    public void console() {
         while (true) {
             System.out.println("Select option\n" +
                     "1. Add product\n" +
@@ -242,4 +247,8 @@ public class WestminsterShoppingManager implements ShoppingManager {
         }
     }
 
+    public static void main(String[] args) {
+        WestminsterShoppingManager wsm = new WestminsterShoppingManager();
+        wsm.console();
+    }
 }

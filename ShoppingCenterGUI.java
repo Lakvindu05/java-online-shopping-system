@@ -190,7 +190,6 @@ public class ShoppingCenterGUI extends JFrame {
                     return component;
                 }
             });
-
             productInfoPanel.add(addToCart);
         }
 
