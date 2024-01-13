@@ -128,10 +128,10 @@ public class WestminsterShoppingManager implements ShoppingManager {
             System.out.println("Products in the system:");
             for (Product product : productsList) {
                 System.out.printf("Product ID:"+ product.getProductId()+"\n" +
-                        "Product Name:"+ product.getProductId()+"\n" +
-                        "Product Type:"+ product.getProductId()+"\n"+
-                        "Product Available Items:"+ product.getProductId()+"\n"+
-                        "Product Price:"+ product.getProductId()+"\n" +
+                        "Product Name:"+ product.getProductName()+"\n" +
+                        "Product Type:"+ product.getType()+"\n"+
+                        "Product Available Items:"+ product.getAvailableItems()+"\n"+
+                        "Product Price:"+ product.getPrice()+"\n" +
                         "--------------------------------------------\n");
             }
         } catch (Exception e) {

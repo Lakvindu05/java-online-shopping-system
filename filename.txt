@@ -1,0 +1,2 @@
+Electronics,1,product 1,4,brand,4,500.0
+Clothing,3,ygfrwo,5,xl,red,450.0
