@@ -2,6 +2,7 @@ package onlineShopping;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -162,6 +163,27 @@ public class ShoppingCenterGUI extends JFrame {
                     refreshTable();
                 }
             });
+
+            productTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+                @Override
+                public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                    Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+                    // Check if the available items are less than or equal to 3
+                    int availableItemsColumnIndex = 3; // Assuming "Available Items" is the fourth column
+                    int availableItems = (int) table.getModel().getValueAt(row, availableItemsColumnIndex);
+
+                    if (availableItems <= 3) {
+                        component.setForeground(Color.RED);
+                    } else {
+                        // Reset the text color to default
+                        component.setForeground(table.getForeground());
+                    }
+
+                    return component;
+                }
+            });
+
             productInfoPanel.add(addToCart);
         }
 

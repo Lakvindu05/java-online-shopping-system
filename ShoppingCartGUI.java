@@ -17,7 +17,7 @@ public class ShoppingCartGUI extends JFrame {
 
         setTitle("Shopping Cart");
         setSize(800, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // Create table model and table
         tableModel = new DefaultTableModel();
@@ -33,7 +33,7 @@ public class ShoppingCartGUI extends JFrame {
 
         totalPanel = new JPanel();
         totalPanel.setLayout(new BoxLayout(totalPanel, BoxLayout.Y_AXIS));
-        totalPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+//        totalPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
 
         // Refresh the cart table
         refreshCartTable();
@@ -61,13 +61,14 @@ public class ShoppingCartGUI extends JFrame {
     public void refreshTotalPanel() {
         totalPanel.removeAll();
 
-        totalPanel.add(new JLabel("Total     $: " + shoppingCart.calculateCost()));
-        totalPanel.add(new JLabel("first purchase Discount 10%:     $ " + shoppingCart.firstPurchDiscount()));
-        totalPanel.add(new JLabel("three items in the same category Discount 20%     $ " + shoppingCart.categoryDiscount()));
-        totalPanel.add(new JLabel("final Cost:   $ "+ shoppingCart.finalTotal()));
+        totalPanel.add(new JLabel("Total :     $ " + shoppingCart.calculateCost()));
+        totalPanel.add(new JLabel("first purchase Discount (10%) :     $ " + shoppingCart.firstPurchDiscount()));
+        totalPanel.add(new JLabel("three items in the same category Discount (20%) :     $ " + shoppingCart.categoryDiscount()));
+        totalPanel.add(new JLabel("final Cost :   $ "+ shoppingCart.finalTotal()));
 
         // Repaint the panel to reflect the changes
         totalPanel.revalidate();
         totalPanel.repaint();
     }
+
 }
