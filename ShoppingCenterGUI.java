@@ -1,6 +1,7 @@
 package onlineShopping;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -53,9 +54,12 @@ public class ShoppingCenterGUI extends JFrame {
         });
 
         // Add the drop-down menu to the top of the frame
-        JPanel topPanel = new JPanel();
-        topPanel.add(new JLabel("Select Product Category:"));
-        topPanel.add(categoryBox);
+        JPanel topPanel = new JPanel(new BorderLayout());
+
+        JPanel categoryPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        categoryPanel.add(new JLabel("Select Product Category:"));
+        categoryPanel.add(categoryBox);
+        topPanel.add(categoryPanel, BorderLayout.WEST);
 
         // Add "View Shopping Cart" button
         JButton viewCartButton = new JButton("View Shopping Cart");
@@ -66,7 +70,7 @@ public class ShoppingCenterGUI extends JFrame {
                 openShoppingCart();
             }
         });
-        topPanel.add(viewCartButton);
+        topPanel.add(viewCartButton, BorderLayout.EAST);
 
         add(topPanel, BorderLayout.NORTH);
 
@@ -151,6 +155,7 @@ public class ShoppingCenterGUI extends JFrame {
                 productInfoPanel.add(new JLabel("   Color: " + ((Clothing) product).getColor()));
             }
 
+
             // add to cart button
             JButton addToCart = new JButton("Add to Cart");
             addToCart.addActionListener(new ActionListener() {
@@ -162,7 +167,9 @@ public class ShoppingCenterGUI extends JFrame {
                     product.setAvailableItems(updateAvailable);
                     refreshTable();
                 }
+
             });
+
 
             productTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
                 @Override

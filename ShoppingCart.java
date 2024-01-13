@@ -34,7 +34,7 @@ public class ShoppingCart {
         }
         return cost;
     }
-    public double firstPurchDiscount(){
+    public double firstPurchaseDiscount(){
         double firstDiscount = calculateCost() * 0.1;
         return firstDiscount;
     }
@@ -57,7 +57,7 @@ public class ShoppingCart {
     }
 
     public double finalTotal(){
-        Double total = calculateCost() - firstPurchDiscount() - categoryDiscount();
+        Double total = calculateCost() - firstPurchaseDiscount() - categoryDiscount();
         return total;
     }
 }

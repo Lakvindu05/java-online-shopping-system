@@ -61,10 +61,10 @@ public class ShoppingCartGUI extends JFrame {
     public void refreshTotalPanel() {
         totalPanel.removeAll();
 
-        totalPanel.add(new JLabel("Total :     $ " + shoppingCart.calculateCost()));
-        totalPanel.add(new JLabel("first purchase Discount (10%) :     $ " + shoppingCart.firstPurchDiscount()));
-        totalPanel.add(new JLabel("three items in the same category Discount (20%) :     $ " + shoppingCart.categoryDiscount()));
-        totalPanel.add(new JLabel("final Cost :   $ "+ shoppingCart.finalTotal()));
+        totalPanel.add(new JLabel("Total :  $ " + shoppingCart.calculateCost()));
+        totalPanel.add(new JLabel("first purchase Discount (10%) :  $ " + shoppingCart.firstPurchaseDiscount()));
+        totalPanel.add(new JLabel("three items in the same category Discount (20%) :  $ " + shoppingCart.categoryDiscount()));
+        totalPanel.add(new JLabel("final Cost :  $ "+ shoppingCart.finalTotal()));
 
         // Repaint the panel to reflect the changes
         totalPanel.revalidate();
